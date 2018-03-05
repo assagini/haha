@@ -11,7 +11,7 @@ import org.zerock.persistence.UserDAO;
 
 @Service
 public class UserServiceImpl implements UserService {
-
+  //633s
   @Inject
   private UserDAO dao;
 
@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
 
     return dao.login(dto);
   }
-  
+  //633e
   @Override
   public void keepLogin(String uid, String sessionId, Date next)
       throws Exception {

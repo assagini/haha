@@ -21,7 +21,7 @@ import org.zerock.service.UserService;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-
+//635s
   @Inject
   private UserService service;
 
@@ -40,7 +40,7 @@ public class UserController {
     }
 
     model.addAttribute("userVO", vo);
-
+//635e
     if (dto.isUseCookie()) {
 
       int amount = 60 * 60 * 24 * 7;

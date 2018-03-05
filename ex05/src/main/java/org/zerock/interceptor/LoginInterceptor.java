@@ -16,6 +16,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
   private static final String LOGIN = "login";
   private static final Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
 
+  //646s
   @Override
   public void postHandle(HttpServletRequest request, 
       HttpServletResponse response, Object handler,
@@ -31,6 +32,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
       logger.info("new login success");
       session.setAttribute(LOGIN, userVO);
 
+      //646s 이 부분이 아직 없음
       if (request.getParameter("useCookie") != null) {
 
         logger.info("remember me................");
@@ -39,12 +41,15 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
         loginCookie.setMaxAge(60 * 60 * 24 * 7);
         response.addCookie(loginCookie);
       }
+      //646e
+      
       // response.sendRedirect("/");
       Object dest = session.getAttribute("dest");
 
       response.sendRedirect(dest != null ? (String) dest : "/");
     }
   }
+  //646e
 
   // @Override
   // public void postHandle(HttpServletRequest request,
@@ -68,6 +73,31 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
   // }
   // }
 
+  
+  
+  /*636s
+  @Override
+  public void postHandle(HttpServletRequest request, 
+      HttpServletResponse response, Object handler,
+      ModelAndView modelAndView) throws Exception {
+
+    HttpSession session = request.getSession();
+
+    ModelMap modelMap = modelAndView.getModelMap();
+    Object userVO = modelMap.get("userVO");
+
+    if (userVO != null) {
+
+      logger.info("new login success");
+      session.setAttribute(LOGIN, userVO);
+      response.sendRedirect("/");
+    }
+  }
+  
+  636e*/
+  
+  
+  //636s
   @Override
   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
@@ -80,4 +110,5 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
     return true;
   }
+  //636e
 }

@@ -2,8 +2,7 @@ package org.zerock.domain;
 
 public class UserVO {
 
-//629쪽	
-	
+//629 문서 전체	
   private String uid;
   private String upw;
   private String uname;

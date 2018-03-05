@@ -37,26 +37,31 @@
 	</beans:bean>
 
 	<beans:bean id="sampleInterceptor" class="org.zerock.interceptor.SampleInterceptor"></beans:bean>
-
+<!--643s  -->
 	<beans:bean id="authInterceptor" class="org.zerock.interceptor.AuthInterceptor"></beans:bean>
+<!--643e  -->
 
+<!--638s  -->
 	<beans:bean id="loginInterceptor" class="org.zerock.interceptor.LoginInterceptor"></beans:bean>
+<!--638e  -->
 
+<!--638s  -->
 	<interceptors>
 
 		<interceptor>
 			<mapping path="/user/loginPost" />
 			<beans:ref bean="loginInterceptor" />
 		</interceptor>
+<!--638e </interceptors>포함 -->
 
-
+<!--643 modifyPage와 removePage는 아직 -->
 		<interceptor>
 			<mapping path="/sboard/register" />
 			<mapping path="/sboard/modifyPage" />
 			<mapping path="/sboard/removePage" />
 			<beans:ref bean="authInterceptor" />
 		</interceptor>
-
+<!--//643  -->
 	</interceptors>
 
 

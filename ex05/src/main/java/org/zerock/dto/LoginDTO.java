@@ -2,6 +2,7 @@ package org.zerock.dto;
 
 public class LoginDTO {
 	
+	//630 문서 전체
 	private String uid;
 	private String upw;
 	private boolean useCookie;

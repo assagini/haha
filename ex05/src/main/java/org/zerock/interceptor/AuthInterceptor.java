@@ -12,11 +12,11 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import org.springframework.web.util.WebUtils;
 import org.zerock.domain.UserVO;
 import org.zerock.service.UserService;
-
+//642s
 public class AuthInterceptor extends HandlerInterceptorAdapter {
 
   private static final Logger logger = LoggerFactory.getLogger(AuthInterceptor.class);
-  
+//642e
   @Inject
   private UserService service;
   
@@ -54,7 +54,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
     return true;
   }  
   
-
+//645s
   private void saveDest(HttpServletRequest req) {
 
     String uri = req.getRequestURI();
@@ -72,23 +72,24 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
       req.getSession().setAttribute("dest", uri + query);
     }
   }
+//645e
+  
+/*642s  
+  @Override
+  public boolean preHandle(HttpServletRequest request, 
+  	HttpServletResponse response, Object handler) throws Exception {
 
-//  @Override
-//  public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-//
-//    HttpSession session = request.getSession();
-//
-//    if (session.getAttribute("login") == null) {
-//
-//      logger.info("current user is not logined");
-//
-//      saveDest(request);
-//      
-//      response.sendRedirect("/user/login");
-//      return false;
-//    }
-//    return true;
-//  }
+    HttpSession session = request.getSession();
+
+    if (session.getAttribute("login") == null) {
+
+      logger.info("current user is not logined");
+      
+      response.sendRedirect("/user/login");
+      return false;
+    }
+    return true;
+  }642e*/
 }
 
 // if(session.getAttribute("login") == null){
