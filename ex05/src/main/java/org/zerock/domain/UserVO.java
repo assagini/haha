@@ -2,6 +2,8 @@ package org.zerock.domain;
 
 public class UserVO {
 
+//629ÂÊ	
+	
   private String uid;
   private String upw;
   private String uname;
