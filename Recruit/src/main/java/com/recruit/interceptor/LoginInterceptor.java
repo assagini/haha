@@ -34,14 +34,14 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		HttpSession session = request.getSession();
 
 		ModelMap modelMap = modelAndView.getModelMap();
-		Object userVO = modelMap.get("userVO");
+		Object boardVO = modelMap.get("boardVO");
 		
 		//response.sendRedirect("/"); 646率 窍搁辑 林籍贸府
 
-		if (userVO != null) {
+		if (boardVO != null) {
 
 			logger.info("new login success");
-			session.setAttribute(LOGIN, userVO);
+			session.setAttribute(LOGIN, boardVO);
 
 			//658 start
 			/*

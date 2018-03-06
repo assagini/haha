@@ -1,20 +1,20 @@
 package com.recruit.dto;
 
 public class LoginDTO {
-	private String uid;
-	private String upw;
+	private String id;
+	private String pw;
 	private boolean useCookie;
-	public String getUid() {
-		return uid;
+	public String getId() {
+		return id;
 	}
-	public void setUid(String uid) {
-		this.uid = uid;
+	public void setId(String id) {
+		this.id = id;
 	}
-	public String getUpw() {
-		return upw;
+	public String getPw() {
+		return pw;
 	}
-	public void setUpw(String upw) {
-		this.upw = upw;
+	public void setPw(String pw) {
+		this.pw = pw;
 	}
 	public boolean isUseCookie() {
 		return useCookie;
@@ -24,7 +24,7 @@ public class LoginDTO {
 	}
 	@Override
 	public String toString() {
-		return "LoginDTO [uid=" + uid + ", upw=" + upw + ", useCookie=" + useCookie + "]";
+		return "LoginDTO [id=" + id + ", pw=" + pw + ", useCookie=" + useCookie + "]";
 	}
 	
 	

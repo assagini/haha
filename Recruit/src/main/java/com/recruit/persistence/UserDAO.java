@@ -2,7 +2,7 @@ package com.recruit.persistence;
 
 import java.util.Date;
 
-import com.recruit.domain.UserVO;
+import com.recruit.domain.BoardVO;
 import com.recruit.dto.LoginDTO;
 
 public interface UserDAO {
@@ -11,7 +11,7 @@ public interface UserDAO {
 	/*
 	로그인을 할 때 사용자의 아이디와 패스워드를 이용해서 사용자의 정보를 조회하는 SQL문을 처리
 	*/
-	public UserVO login(LoginDTO dto)throws Exception;
+	public BoardVO login(LoginDTO dto)throws Exception;
 	//631 end
 	
 	//664 start
@@ -20,9 +20,9 @@ public interface UserDAO {
 	로그인 한 사용자의 sessionKey와 sessionLimit를 업데이트 하는 기능
 	loginCookie에 기록된 값으로 사용자의 정보를 조회하는 기능 
 	*/
-	public void keepLogin(String uid, String sessionId, Date next);
+	public void keepLogin(String id, String sessionId, Date next);
 	  
-	public UserVO checkUserWithSessionKey(String value);	
+	public BoardVO checkUserWithSessionKey(String value);	
 	//664 end  
 	
 }

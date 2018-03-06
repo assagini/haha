@@ -15,18 +15,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.util.WebUtils;
 
-import com.recruit.domain.UserVO;
+import com.recruit.domain.BoardVO;
 import com.recruit.dto.LoginDTO;
 import com.recruit.service.UserService;
 
 @Controller
-@RequestMapping("/user/*")
+@RequestMapping("/rpjt/*")
 public class UserController {
 	//635 start
 	@Inject
 	private UserService service;
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping(value = "/cheader", method = RequestMethod.GET)
 	public void loginGET(@ModelAttribute("dto") LoginDTO dto) {
 
 	}
@@ -34,13 +34,13 @@ public class UserController {
 	@RequestMapping(value = "/loginPost", method = RequestMethod.POST)
 	public void loginPOST(LoginDTO dto, HttpSession session, Model model) throws Exception {
 
-		UserVO vo = service.login(dto);
+		BoardVO vo = service.login(dto);
 
 		if (vo == null) {
 			return;
 		}
 
-		model.addAttribute("userVO", vo);
+		model.addAttribute("boardVO", vo);
 
 		//635 end
 
@@ -55,7 +55,7 @@ public class UserController {
 
 			Date sessionLimit = new Date(System.currentTimeMillis() + (1000 * amount));
 
-			service.keepLogin(vo.getUid(), session.getId(), sessionLimit);
+			service.keepLogin(vo.getId(), session.getId(), sessionLimit);
 		}
 	}
 	//666 end
@@ -71,7 +71,7 @@ public class UserController {
 		Object obj = session.getAttribute("login");
 
 		if (obj != null) {
-			UserVO vo = (UserVO) obj;
+			BoardVO vo = (BoardVO) obj;
 
 			session.removeAttribute("login");
 			session.invalidate();
@@ -82,7 +82,7 @@ public class UserController {
 				loginCookie.setPath("/");  //logout.jsp는 별다른 내용없이 '/'과 같은 경로로 이동하는 코드만 작성한다.
 				loginCookie.setMaxAge(0);
 				response.addCookie(loginCookie);
-				service.keepLogin(vo.getUid(), session.getId(), new Date());
+				service.keepLogin(vo.getId(), session.getId(), new Date());
 			}
 		}
 	}

@@ -58,3 +58,9 @@ public class BoardVO {
 	}
 	
 }
+
+//629
+/*
+세션에 보관될 UserVO클래스를 설계
+*/
+

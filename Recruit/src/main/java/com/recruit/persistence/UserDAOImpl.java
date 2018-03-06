@@ -9,7 +9,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.recruit.domain.UserVO;
+import com.recruit.domain.BoardVO;
 import com.recruit.dto.LoginDTO;
 
 
@@ -24,7 +24,7 @@ public class UserDAOImpl implements UserDAO {
 	private static String namespace = "com.recruit.mapper.userMapper";
 
 	@Override
-	public UserVO login(LoginDTO dto) throws Exception {
+	public BoardVO login(LoginDTO dto) throws Exception {
 
 		return session.selectOne(namespace + ".login", dto);
 	}
@@ -33,10 +33,10 @@ public class UserDAOImpl implements UserDAO {
 	
 	//665 start
 	@Override
-	public void keepLogin(String uid, String sessionId, Date next) {
+	public void keepLogin(String id, String sessionId, Date next) {
 
 		Map<String, Object> paramMap = new HashMap<String, Object>();
-		paramMap.put("uid", uid);
+		paramMap.put("id", id);
 		paramMap.put("sessionId", sessionId);
 		paramMap.put("next", next);
 
@@ -45,7 +45,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public UserVO checkUserWithSessionKey(String value) {
+	public BoardVO checkUserWithSessionKey(String value) {
 
 		return session.selectOne(namespace + ".checkUserWithSessionKey", value);
 	}

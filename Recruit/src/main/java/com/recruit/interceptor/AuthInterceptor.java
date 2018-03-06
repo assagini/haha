@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import org.springframework.web.util.WebUtils;
 
-import com.recruit.domain.UserVO;
+import com.recruit.domain.BoardVO;
 import com.recruit.service.UserService;
 
 
@@ -59,19 +59,19 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
       
       if(loginCookie != null) { 
         
-        UserVO userVO = service.checkLoginBefore(loginCookie.getValue());
+        BoardVO boardVO = service.checkLoginBefore(loginCookie.getValue());
         
-        logger.info("USERVO: " + userVO);
+        logger.info("USERVO: " + boardVO);
         
-        if(userVO != null){
-          session.setAttribute("login", userVO);
+        if(boardVO != null){
+          session.setAttribute("login", boardVO);
           return true;
         }
         
       }
       //667 end
       
-      response.sendRedirect("/user/login");
+      response.sendRedirect("/rpjt/cheader");
       return false;
     }
     return true;

@@ -6,7 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.recruit.domain.UserVO;
+import com.recruit.domain.BoardVO;
 import com.recruit.dto.LoginDTO;
 import com.recruit.persistence.UserDAO;
 
@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
 	  private UserDAO dao;
 
 	  @Override
-	  public UserVO login(LoginDTO dto) throws Exception {
+	  public BoardVO login(LoginDTO dto) throws Exception {
 
 	    return dao.login(dto);
 	  }
@@ -27,15 +27,15 @@ public class UserServiceImpl implements UserService {
 	  
 	  //666 start
 	  @Override
-	  public void keepLogin(String uid, String sessionId, Date next)
+	  public void keepLogin(String id, String sessionId, Date next)
 	      throws Exception {
 	    
-	    dao.keepLogin(uid, sessionId, next);
+	    dao.keepLogin(id, sessionId, next);
 	    
 	  }
 
 	  @Override
-	  public UserVO checkLoginBefore(String value) {
+	  public BoardVO checkLoginBefore(String value) {
 	    
 	    return dao.checkUserWithSessionKey(value);
 	  }

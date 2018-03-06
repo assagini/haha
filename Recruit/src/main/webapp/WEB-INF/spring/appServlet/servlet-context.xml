@@ -40,7 +40,7 @@
 		'/user/loginPost'경로를 호출할 때 동작하도록 설정됨
 		-->
 		<interceptor>
-			<mapping path="/user/loginPost" />
+			<mapping path="/rpjt/loginPost" />
 			<beans:ref bean="loginInterceptor" />
 		</interceptor>
 		<!--638 end  -->
