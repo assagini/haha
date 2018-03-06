@@ -36,13 +36,12 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		ModelMap modelMap = modelAndView.getModelMap();
 		Object boardVO = modelMap.get("boardVO");
 		
-		//response.sendRedirect("/"); 646쪽 하면서 주석처리
-
 		if (boardVO != null) {
 
 			logger.info("new login success");
 			session.setAttribute(LOGIN, boardVO);
-
+			//response.sendRedirect("/"); 646쪽 하면서 주석처리
+			
 			//658 start
 			/*
 			 '자동 로그인'을 선택한 경우 쿠키를 생성하고 생성된 쿠키의 이름은 loginCookie로 지정 생성된
@@ -70,8 +69,8 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			//646 start
 			Object dest = session.getAttribute("dest");
 
-			response.sendRedirect(dest != null ? (String) dest : "/");
-			//646 end
+			response.sendRedirect(dest != null ? (String) dest : "/rpjt/index");
+			//646 end0
 		}
 	}
 	//636 end

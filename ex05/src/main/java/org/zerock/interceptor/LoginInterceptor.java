@@ -49,7 +49,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
       response.sendRedirect(dest != null ? (String) dest : "/");
     }
   }
-  //646e
+  //646ea
 
   // @Override
   // public void postHandle(HttpServletRequest request,

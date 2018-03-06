@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<!--c태그라고 함 , MyPage,로그아웃 전환에 이용-->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -29,8 +31,6 @@
 
 
 
-
-
 <!--호환성 같은데 잘 모르겠음  -->
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -43,7 +43,6 @@
 
 <!--제이쿼리 쓴다는 말이고  -->
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
 
 
 </head>
@@ -75,6 +74,8 @@
 
 					<!--회원가입, 로그인 부분 -->
 					<!--a href="#" 삭제하면 안됨  -->
+					<!--c태그 이용해서 로그인 되면 MyPage,로그아웃이 나오게 함  -->
+					<c:if test="${empty sessionScope.login}">
 					<li id="myBtn_join">
 					<a href="#"> 
 					<span class="glyphicon glyphicon-user"></span> 회원가입
@@ -86,34 +87,43 @@
 					<span class="glyphicon glyphicon-log-in"></span> 로그인
 					</a>
 					</li> 	
+					</c:if>
 					<!--//회원가입, 로그인 부분  -->
 					
 					
+					<!--MyPage, 로그아웃 부분  -->
+					<c:if test="${not empty sessionScope.login}">
+					<li><a href="#">MyPage</a></li>
+					<li><a href="/rpjt/logout">로그아웃</a></li>
+					</c:if>
+					<!--//MyPage, 로그아웃 부분  -->
+		
+					
 					
 				</ul>
+				
 			</div>
 			<!-- /.navbar-collapse -->
+			
 		</div>
 		<!-- /.container -->
+		
 	</nav>
 	<!--// 상단 네비게이션 -->
+
+
+
+
+
 
 	<!--__________________________로그인 모달 시작_______________________________________  -->
 	
 	<!--
 	해야 할 것
-	1. 기억하기 체크박스
-	
-	
-	
-	
-	
-	  -->
-	
-	
-	
-	
-	
+	1. 기억하기 체크박스 처리
+	2. 로그인 틀린 사람 처리하기
+	3. 아이디, 패스워드 잊어먹었을 경우 처리
+	4. 모달찰 정가운데 배치-->
 	
 	
 	
@@ -257,10 +267,6 @@
 							<br> 
 							<a href="#">패스워드를	잊어버렸어요</a>
 							
-							
-							<!--x표시로 클릭하면 창이 사라짐  -->
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-
 
 						</form>
 
@@ -294,7 +300,6 @@
 	<!--
 	전체 관련 해야 할 것들
 	1. 모달찰 정가운데 배치
-	2. 로그인 구현
 	-->
 
 
@@ -351,7 +356,7 @@
 				<!--모달 안에 들어가는 내용  -->
 				<div class="tab-content">
 
-					<!--_____________________개인 회원 시작_____________________ -->
+					<!--_____________________회원가입 개인 회원 시작_____________________ -->
 					<div id="join_person" class="tab-pane fade in active">
 
 						<!--action속성값이 rController랑 연결되는 거 같음  -->
@@ -421,11 +426,11 @@
 
 
 					</div>
-					<!--//_____________________개인 회원 끝_____________________  -->
+					<!--//_____________________회원가입 개인회원 끝_____________________  -->
 
 
 
-					<!--_____________________기업 회원 시작_____________________  -->
+					<!--_____________________회원가입 기업회원 시작_____________________  -->
 					<div id="join_company" class="tab-pane fade">
 						<form role="form" action="joinperson" method="post">
 
@@ -498,7 +503,7 @@
 
 
 					</div>
-					<!--//_____________________기업 회원 끝_____________________  -->
+					<!--//_____________________회원가입 기업회원 끝_____________________  -->
 
 
 

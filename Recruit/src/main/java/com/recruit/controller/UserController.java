@@ -49,6 +49,7 @@ public class UserController {
 		 * 사용자가 '자동 로그인'을 선택한 경우 필요한 기능 추가 코드의 핵심은 loginCookie값이 유지되는 시간 정보를
 		 * 데이터베이스애 저장하는 것
 		 */
+		System.out.println(dto.isUseCookie());
 		if (dto.isUseCookie()) {
 
 			int amount = 60 * 60 * 24 * 7;

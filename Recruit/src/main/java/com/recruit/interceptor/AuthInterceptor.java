@@ -71,7 +71,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
       }
       //667 end
       
-      response.sendRedirect("/rpjt/cheader");
+      response.sendRedirect("/rpjt/index");
       return false;
     }
     return true;
