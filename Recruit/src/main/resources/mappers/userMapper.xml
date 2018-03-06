@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="login" resultType="BoardVO">
 
 	select id, pw, pname 
-	from book_ex.tbl_board 
+	from schemaname.tblUser 
 	where id = #{id} and pw = #{pw}
 
 	</select>
@@ -27,7 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	  -->
 	<update id="keepLogin">
 	
-		update tbl_board 
+		update tblUser 
 		set sessionKey = #{sessionId}, sessionLimit = #{next} 
 		where id = #{id}
 	
@@ -37,7 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="checkUserWithSessionKey" resultType="BoardVO">
 	
 		select * 
-		from tbl_board 
+		from tblUser 
 		where sessionKey = #{value} and sessionlimit > now()
 	
 	</select>
